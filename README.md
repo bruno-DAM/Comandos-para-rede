@@ -66,7 +66,7 @@ ncpa.cpl
 Wi-Fi > Propriedades > TCP/IPv4 → Automático
 ```
 
-# Conexão de redes conhecidas pelo terminal 
+#### Conexão de redes conhecidas pelo terminal 
 
 ```
 Tecla Windows + r > CMD > Execute como administrador
@@ -83,7 +83,7 @@ netsh wlan connect name="Nome_da_rede"
 ipconfig /flushdns
 ```
 
-# Comandos úteis 
+#### Comandos úteis 
 
 ```
 # Exibe tabela de roteamento IP

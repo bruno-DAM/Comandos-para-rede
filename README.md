@@ -1,5 +1,5 @@
 # Comandos-para-rede
-Junção de comandos de rede Windows/Linux para auziliar na resolução de problemas
+Junção de comandos de rede Windows/Linux para auxiliar na resolução de problemas.
 
 # Comandos de rede
 

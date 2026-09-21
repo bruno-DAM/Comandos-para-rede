@@ -2,7 +2,7 @@
 Observação: talvez seja necessário a instalação de alguns comandos apresentados abaixo.
 
 #### Conexão com redes conhecidas
-```
+```bash
 # Lista as redes Wi-Fi disponíveis
 nmcli device wifi list
 
@@ -21,7 +21,7 @@ nmcli connection down "Wi-Fi"
 
 #### Encontrar gateway
 
-```
+```bash
 # Exibe o gateway padrão e a tabela de roteamento
 ip route
 
@@ -30,14 +30,14 @@ traceroute 8.8.8.8
 ```
 
 Caso o ``traceroute`` não esteja instalado:
-```
+```bash
 sudo apt install traceroute
 ```
 
 #### Endereço IP estático temporário
 
 Identificação de interface:
-```
+```bash
 # Lista interfaces de rede
 ip link
 
@@ -46,7 +46,7 @@ nmcli device status
 ```
 
 Configuração de endereço IP:
-```
+```bash
 # Adicionar endereço IP à interface
 sudo ip addr add 192.168.1.100/24 dev wlp2s0
 
@@ -64,7 +64,7 @@ Ordem após o ``addr add``: [Endereço IP do dispositivo]/[Prefixo da rede]
 #### Configuração permanente
 
 Configuração utilizando o comando ``nmcli``:
-```
+```bash
 # Lista as conexões disponíveis
 nmcli connection show
 
@@ -95,7 +95,7 @@ ip route
 ```
 
 #### Endereço IP dinâmico (DHCP)
-```
+```bash
 sudo nmcli connection modify "Wi-Fi" \
 ipv4.method auto \
 ipv4.addresses "" \
@@ -106,7 +106,7 @@ sudo nmcli connection down "Wi-Fi"
 sudo nmcli connection up "Wi-Fi"
 ```
 Renovação de DHCP com base em uma interface específica:
-```
+```bash
 # Libera o endereço atual
 sudo dhclient -r wlp2s0
 
@@ -115,7 +115,7 @@ sudo dhclient wlp2s0
 ```
 
 #### Problemas com DNS 
-```
+```bash
 # Limpa o cache DNS
 sudo resolvectl flush-caches
 
@@ -132,7 +132,7 @@ nslookup google.com 8.8.8.8
 
 #### Teste de conexão 
 
-```
+```bash
 # Testa conectividade com um endereço IP
 ping -c 4 8.8.8.8
 

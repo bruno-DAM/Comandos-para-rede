@@ -1,6 +1,6 @@
 ### Comandos de rede - Linux
 
-### Conexão com redes conhecidas
+#### Conexão com redes conhecidas
 ```
 # Lista as redes Wi-Fi disponíveis
 nmcli device wifi list
@@ -18,7 +18,7 @@ nmcli connection up "Nome_da_rede"
 nmcli connection down "Wi-Fi"
 ```
 
-### Encontrar gateway
+#### Encontrar gateway
 
 ```
 # Exibe o gateway padrão e a tabela de roteamento
@@ -33,7 +33,7 @@ Caso o ``traceroute`` não esteja instalado:
 sudo apt install traceroute
 ```
 
-### Endereço IP estático temporário
+#### Endereço IP estático temporário
 
 Identificação de interface:
 ```
@@ -93,7 +93,7 @@ nmcli device show
 ip route
 ```
 
-### Endereço IP dinâmico (DHCP)
+#### Endereço IP dinâmico (DHCP)
 ```
 sudo nmcli connection modify "Wi-Fi" \
 ipv4.method auto \
@@ -113,7 +113,7 @@ sudo dhclient -r wlp2s0
 sudo dhclient wlp2s0
 ```
 
-### Problemas com DNS 
+#### Problemas com DNS 
 ```
 # Limpa o cache DNS
 sudo resolvectl flush-caches
@@ -129,7 +129,7 @@ nslookup google.com 1.1.1.1
 nslookup google.com 8.8.8.8
 ```
 
-### Teste de conexão 
+#### Teste de conexão 
 
 ```
 # Testa conectividade com um endereço IP
@@ -141,4 +141,3 @@ ping -c 4 google.com
 # Consulta informações de DNS
 nslookup google.com
 ```
-

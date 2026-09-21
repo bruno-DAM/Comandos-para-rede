@@ -1,4 +1,5 @@
 ### Comandos de rede - Linux
+Observação: talvez seja necessário a instalação de alguns comandos apresentados abaixo.
 
 #### Conexão com redes conhecidas
 ```

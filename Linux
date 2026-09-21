@@ -1,0 +1,142 @@
+### Conexão com redes conhecidas
+```
+# Lista as redes Wi-Fi disponíveis
+nmcli device wifi list
+
+# Conecta a uma rede Wi-Fi
+nmcli device wifi connect "Nome_da_rede" password "Senha_da_rede"
+
+# Lista as redes salvas
+nmcli connection show
+
+# Ativa uma conexão salva
+nmcli connection up "Nome_da_rede"
+
+# Desconecta uma conexão específica
+nmcli connection down "Wi-Fi"
+```
+
+### Encontrar gateway
+
+```
+# Exibe o gateway padrão e a tabela de roteamento
+ip route
+
+# Mostra o caminho até o destino
+traceroute 8.8.8.8
+```
+
+Caso o ``traceroute`` não esteja instalado:
+```
+sudo apt install traceroute
+```
+
+### Endereço IP estático temporário
+
+Identificação de interface:
+```
+# Lista interfaces de rede
+ip link
+
+# Exibe conexões gerenciadas pelo NetworkManager
+nmcli device status
+```
+
+Configuração de endereço IP:
+```
+# Adicionar endereço IP à interface
+sudo ip addr add 192.168.1.100/24 dev wlp2s0
+
+# Define o gateway padrão
+sudo ip route add default via 192.168.1.1 dev wlp2s0
+
+# Ativa a interface
+sudo ip link set wlp2s0 up
+```
+
+Ordem após o ``addr add``: [Endereço IP do dispositivo]/[Prefixo da rede]
+
+**Atenção**: substitua `"Wi-Fi"` pelo nome da conexão e `wlp2s0` pelo nome da interface correspondente ao seu sistema. Modifique os endereços IPv4 e IPv6 conforme a configuração da sua rede
+
+#### Configuração permanente
+
+Configuração utilizando o comando ``nmcli``:
+```
+# Lista as conexões disponíveis
+nmcli connection show
+
+# Define o endereço IPv4 manualmente
+sudo nmcli connection modify "Wi-Fi" \
+ipv4.method manual \
+ipv4.addresses 192.168.1.100/24 \
+ipv4.gateway 192.168.1.1
+
+# Configuração IPv6
+sudo nmcli connection modify "Wi-Fi" \
+ipv6.method manual \
+ipv6.addresses "2001:db8::100/64" \
+ipv6.gateway "2001:db8::1" \
+ipv6.dns "2606:4700:4700::1111 2001:4860:4860::8888"
+
+# Configuração de DNS
+sudo nmcli connection modify "Wi-Fi" \
+ipv4.dns "1.1.1.1 8.8.8.8"
+
+# Desconectar e reconectar para aplicar configurações
+sudo nmcli connection down "Wi-Fi"
+sudo nmcli connection up "Wi-Fi"
+
+# Exibição das configurações 
+nmcli device show
+ip route
+```
+
+### Endereço IP dinâmico (DHCP)
+```
+sudo nmcli connection modify "Wi-Fi" \
+ipv4.method auto \
+ipv4.addresses "" \
+ipv4.gateway "" \
+ipv4.dns ""
+
+sudo nmcli connection down "Wi-Fi"
+sudo nmcli connection up "Wi-Fi"
+```
+Renovação de DHCP com base em uma interface específica:
+```
+# Libera o endereço atual
+sudo dhclient -r wlp2s0
+
+# Solicita um novo endereço
+sudo dhclient wlp2s0
+```
+
+### Problemas com DNS 
+```
+# Limpa o cache DNS
+sudo resolvectl flush-caches
+
+# Exibe o estado do cache
+resolvectl statistics
+
+# Reinicia o serviço de resolução de nomes
+sudo systemctl restart systemd-resolved
+
+# Testar servidores DNS específicos
+nslookup google.com 1.1.1.1
+nslookup google.com 8.8.8.8
+```
+
+### Teste de conexão 
+
+```
+# Testa conectividade com um endereço IP
+ping -c 4 8.8.8.8
+
+# Testa conectividade e resolução de nomes
+ping -c 4 google.com
+
+# Consulta informações de DNS
+nslookup google.com
+```
+

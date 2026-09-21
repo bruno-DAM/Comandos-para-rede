@@ -2,7 +2,7 @@
 
 #### Encontrar gateway
 
-```
+```bat
 # Exibe tabela de roteamento e 
 netstat -r
 

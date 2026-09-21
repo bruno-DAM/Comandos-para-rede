@@ -33,8 +33,6 @@ Após ``static`` a ordem é: [Endereço IP do dispositivo] [Mascára da rede] [G
 
 OBS: Não usar endereços presentes no comando, modifique conforme os endereços da sua rede sendo ela IPv4 ou IPv6.
 
-Caso o comando ``ping``  e ``nslookup`` funcione, é possível navegar e acessar websites. 
-
 ```
 # Verificação de estado de interfaces
 netsh interface show interface

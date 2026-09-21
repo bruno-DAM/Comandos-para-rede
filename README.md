@@ -1,11 +1,9 @@
 # Comandos-para-rede
 Junção de comandos de rede Windows/Linux para auxiliar na resolução de problemas.
 
-# Comandos de rede
-
 ### Mudança de endereço de IP - Windows
 
-#### Achar gateway
+#### Encontrar gateway
 
 ```
 # Exibe tabela de roteamento e 

@@ -12,7 +12,7 @@ tracert 8.8.8.8
 
 #### Endereço estático
 
-```
+```bat
 # Exibe IP, máscara, gateway e DNS
 netsh interface ipv4 show config
 
@@ -33,14 +33,14 @@ Após ``static`` a ordem é: [Endereço IP do dispositivo] [Mascára da rede] [G
 
 OBS: Não usar endereços presentes no comando, modifique conforme os endereços da sua rede sendo ela IPv4 ou IPv6.
 
-```
+```bat
 # Verificação de estado de interfaces
 netsh interface show interface
 ```
 
 #### Endereço DHCP (Automático)
 
-```
+```bat
 netsh interface ipv4 show config name="Wi-Fi" source=DHCP
 
 # Renovar endereço IP DHCP
@@ -51,7 +51,7 @@ ipconfig /renew
 
 Outra forma
 
-```
+```bat
 Tecla Windows + r
 
 ncpa.cpl
@@ -61,7 +61,7 @@ Wi-Fi > Propriedades > TCP/IPv4 → Automático
 
 #### Conexão de redes conhecidas pelo terminal 
 
-```
+```bat
 Tecla Windows + r > CMD > Execute como administrador
 
 netsh wlan shows networks
@@ -71,14 +71,14 @@ netsh wlan connect name="Nome_da_rede"
 
 #### Problemas de DNS
 
-```
+```bat
 # Libera cache de DNS
 ipconfig /flushdns
 ```
 
 #### Comandos úteis 
 
-```
+```bat
 # Exibe tabela de roteamento IP
 route print
 
